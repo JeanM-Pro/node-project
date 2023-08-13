@@ -57,7 +57,5 @@ app.delete("/api/contacts/:id", (req, res) => {
   res.send(contact);
 });
 
-const port = process.env.port || 80;
+const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`Escuchando en el puerto ${port}`));
-
-const prueba = "";
