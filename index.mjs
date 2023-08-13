@@ -5,22 +5,7 @@ const app = express();
 
 app.use(json());
 
-const contacts = [
-  {
-    namne: "Pedro Perez",
-    tlf: "22997145377",
-    email: "jeancentno54@gmail.com",
-    direccion: "Las Casitas De Monte Velde",
-    id: 1,
-  },
-  {
-    name: "Maria Magdalena",
-    tlf: "68999090886",
-    email: "mariamagda@gmail.com",
-    direccion: "Calle Jose Felix rivas, Barrio Sur N35",
-    id: 2,
-  },
-];
+const contacts = [];
 
 app.get("/", (req, res) => {
   res.send("Node JS api");
