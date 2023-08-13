@@ -1,4 +1,5 @@
 import express, { json } from "express";
+import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 
@@ -13,7 +14,7 @@ const contacts = [
     id: 1,
   },
   {
-    namne: "Maria Magdalena",
+    name: "Maria Magdalena",
     tlf: "68999090886",
     email: "mariamagda@gmail.com",
     direccion: "Calle Jose Felix rivas, Barrio Sur N35",
@@ -30,14 +31,14 @@ app.get("/api/contacts", (req, res) => {
 });
 
 app.get("/api/contacts/:id", (req, res) => {
-  const contact = contacts.find(c.id === parseInt(req.params.id));
+  const contact = contacts.find((c) => c.id === parseInt(req.params.id));
   if (!contact) return res.status(404).send("Conacto no encontrado");
   else res.send(contact);
 });
 
 app.post("/api/contacts", (req, res) => {
   const contact = {
-    id: contacts.length + 1,
+    id: uuidv4(),
     name: req.body.name,
     tlf: parseInt(req.body.tlf),
     email: req.body.email,
@@ -48,8 +49,8 @@ app.post("/api/contacts", (req, res) => {
   res.send(contact);
 });
 
-app.delete("/api/contacts/id", (req, res) => {
-  const contact = contacts.find(c.id === parseInt(req.params.id));
+app.delete("/api/contacts/:id", (req, res) => {
+  const contact = contacts.find((c) => c.id === parseInt(req.params.id));
   if (!contact) return res.status(404).send("Contacto no encontrado");
   const index = contacts.indexOf(contact);
   contacts.splice(index, 1);
