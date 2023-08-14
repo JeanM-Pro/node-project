@@ -6,6 +6,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "https://node-project-production-dadb.up.railway.app",
+  "https://lista-de-contatos-12fdd.web.app",
 ];
 
 app.use(json());
