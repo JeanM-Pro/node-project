@@ -1,9 +1,19 @@
 import express, { json } from "express";
 import { v4 as uuidv4 } from "uuid";
+import cors from "cors";
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://node-project-production-dadb.up.railway.app",
+];
 
 app.use(json());
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 const contacts = [];
 
@@ -45,5 +55,3 @@ app.delete("/api/contacts/:id", (req, res) => {
 
 const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`Escuchando en el puerto ${port}`));
-
-// Prueba
