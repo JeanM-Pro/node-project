@@ -22,7 +22,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/contacts", (req, res) => {
-  res.send(contacts);
+  const { uid } = req.query;
+  const filteredContacts = contacts.filter((contact) => contact.uid === uid);
+  res.send(filteredContacts);
 });
 
 app.get("/api/contacts/:id", (req, res) => {
