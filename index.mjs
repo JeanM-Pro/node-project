@@ -24,10 +24,11 @@ app.get("/api/contacts/:id", (req, res) => {
 app.post("/api/contacts", (req, res) => {
   const contact = {
     id: uuidv4(),
-    name: req.body.name,
+    nome: req.body.nome,
     tlf: parseInt(req.body.tlf),
     email: req.body.email,
-    direccion: req.body.direccion,
+    endereco: req.body.endereco,
+    gender: req.body.gender,
   };
 
   contacts.push(contact);
