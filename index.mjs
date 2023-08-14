@@ -39,6 +39,7 @@ app.post("/api/contacts", (req, res) => {
     email: req.body.email,
     endereco: req.body.endereco,
     gender: req.body.gender,
+    uid: req.body.uid,
   };
 
   contacts.push(contact);
