@@ -26,7 +26,7 @@ app.get("/api/contacts", (req, res) => {
 });
 
 app.get("/api/contacts/:id", (req, res) => {
-  const contact = contacts.find((c) => c.id === parseInt(req.params.id));
+  const contact = contacts.find((c) => c.id === req.params.id);
   if (!contact) return res.status(404).send("Conacto no encontrado");
   else res.send(contact);
 });
@@ -46,7 +46,7 @@ app.post("/api/contacts", (req, res) => {
 });
 
 app.put("/api/contacts/:id", (req, res) => {
-  const contactId = parseInt(req.params.id);
+  const contactId = req.params.id;
   const contactIndex = contacts.findIndex((c) => c.id === contactId);
 
   if (contactIndex === -1) {
@@ -67,7 +67,7 @@ app.put("/api/contacts/:id", (req, res) => {
 });
 
 app.delete("/api/contacts/:id", (req, res) => {
-  const contact = contacts.find((c) => c.id === parseInt(req.params.id));
+  const contact = contacts.find((c) => c.id === req.params.id);
   if (!contact) return res.status(404).send("Contacto no encontrado");
   const index = contacts.indexOf(contact);
   contacts.splice(index, 1);
